@@ -1,0 +1,485 @@
+/* Estilos generales mejorados */
+:root {
+    --primary-color: #e74c3c;
+    --secondary-color: #2c3e50;
+    --accent-color: #3498db;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --success-color: #27ae60;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    line-height: 1.7;
+}
+
+/* Nuevas animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.3s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.6s;
+}
+
+.pulse-hover:hover {
+    animation: pulse 2s infinite;
+}
+
+/* Header mejorado */
+.header {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.8), rgba(46, 64, 83, 0.9)), 
+                url('img/portada-emcc.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    margin-bottom: 50px;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: var(--light-color);
+    clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 100%);
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-top: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Contenido principal mejorado */
+.main-content {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-section {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+    border-left: 5px solid var(--primary-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.about-section h2 {
+    color: var(--secondary-color);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+    margin-top: 0;
+    font-size: 2.2rem;
+    position: relative;
+}
+
+.about-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+/* Galería mejorada */
+.gallery-section {
+    margin: 80px 0;
+}
+
+.gallery-section h2 {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gallery-section h2::before,
+.gallery-section h2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.gallery-section h2::before {
+    left: -60px;
+}
+
+.gallery-section h2::after {
+    right: -60px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    aspect-ratio: 4/3;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: all 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item .img-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 25px 20px 15px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease-out;
+}
+
+.gallery-item:hover .img-info {
+    transform: translateY(0);
+}
+
+.img-info h3 {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease 0.1s;
+}
+
+.img-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease 0.2s;
+}
+
+.gallery-item:hover .img-info h3,
+.gallery-item:hover .img-info p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Modal mejorado */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    overflow: auto;
+    animation: fadeIn 0.4s;
+}
+
+.modal-content {
+    display: block;
+    margin: 80px auto 30px;
+    max-width: 85%;
+    max-height: 75vh;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    animation: slideInRight 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation-delay: 0.2s;
+}
+
+.close-btn {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 1001;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn:hover {
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+.modal-info {
+    color: white;
+    text-align: center;
+    padding: 25px;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    background: rgba(46, 64, 83, 0.7);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border-left: 4px solid var(--primary-color);
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation-delay: 0.4s;
+}
+
+.modal-info h2 {
+    color: white;
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+/* Footer mejorado */
+.footer {
+    background: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 80px;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+}
+
+.footer p {
+    margin: 0;
+    padding-top: 20px;
+}
+
+/* Efectos especiales */
+.hover-effect {
+    transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-3px);
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive mejorado */
+@media (max-width: 992px) {
+    .title {
+        font-size: 2.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 100px 20px;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    }
+    
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+        padding: 8px 20px;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        margin-top: 100px;
+    }
+    
+    .close-btn {
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+    }
+    
+    .gallery-section h2::before,
+    .gallery-section h2::after {
+        width: 30px;
+    }
+    
+    .gallery-section h2::before {
+        left: -40px;
+    }
+    
+    .gallery-section h2::after {
+        right: -40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 80px 15px;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .about-section {
+        padding: 25px;
+    }
+    
+    .gallery-section h2::before,
+    .gallery-section h2::after {
+        display: none;
+    }
+}
+
+
+
+/* Estilos para fotos relacionadas en el modal */
+.related-photos {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.related-photos h3 {
+    color: var(--light-color);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.related-item {
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.related-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.related-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
